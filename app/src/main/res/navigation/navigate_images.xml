@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigate_images"
+    app:startDestination="@id/retroHomeFragment">
+    <fragment
+        android:id="@+id/retroHomeFragment"
+        android:name="com.example.facialdetection.retro.RetroHomeFragment"
+        android:label="RetroHomeFragment"
+        tools:layout="@layout/fragment_retro_home">
+        <action
+            android:id="@+id/action_retroHomeFragment_to_getImagesFragment2"
+            app:destination="@id/getImagesFragment2" />
+        <action
+            android:id="@+id/action_retroHomeFragment_to_uploadImageFragment"
+            app:destination="@id/uploadImageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/getImagesFragment2"
+        android:name="com.example.facialdetection.retro.GetImagesFragment"
+        android:label="GetImagesFragment" />
+    <fragment
+        android:id="@+id/uploadImageFragment"
+        android:name="com.example.facialdetection.retro.UploadImageFragment"
+        android:label="UploadImageFragment"
+        tools:layout="@layout/fragment_upload_image"/>
+</navigation>

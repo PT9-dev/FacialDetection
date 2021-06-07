@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:fillViewport="true" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/bg_black2"
+            tools:context=".retro.RetroActivity">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Image Upload Menu"
+                android:textSize="100px"
+                android:textColor="#d3d8e3"
+                android:layout_alignParentTop = "true"
+                android:layout_centerHorizontal = "true"
+                android:layout_marginTop="50dp" />
+
+            <Button
+                android:id="@+id/getImageBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="450dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round_button"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:text="GET IMAGES"
+                android:textColor="@color/element_white"
+                android:textSize="20dp" />
+
+
+            <Button
+                android:id="@+id/uploadImageBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="550dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round_button"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:text="UPLOAD IMAGE"
+                android:textColor="@color/element_white"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/getImageByNameBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="650dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round_button"
+                android:elevation="10dp"
+                android:gravity="center"
+                android:text="GET IMAGE BY NAME"
+                android:textColor="@color/element_white"
+                android:textSize="20dp" />
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+</layout>
