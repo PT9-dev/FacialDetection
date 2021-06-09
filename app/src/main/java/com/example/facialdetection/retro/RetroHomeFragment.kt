@@ -16,6 +16,7 @@ import com.example.facialdetection.retro.pojo.WeatherId
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class RetroHomeFragment : Fragment() {
@@ -86,7 +87,7 @@ class RetroHomeFragment : Fragment() {
                     textAdapter.notifyDataSetChanged()
 
                     if(body?.size == 1)
-                        if (body[0].title==queryLocation)
+                        if (body[0].title == queryLocation.capitalize(Locale.ROOT))
                             id = body[0].woeid.toString()
 
                 }

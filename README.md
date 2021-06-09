@@ -1,2 +1,4 @@
 # Facial Detection
-Facial detection and weather app using metaweather.com api
+Consists of:
+Facial detection app
+Weather app using metaweather.com api
