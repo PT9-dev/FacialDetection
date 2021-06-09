@@ -13,5 +13,6 @@
     <string name="select_image">Select Image</string>
     <string name="location_txt_hint">Enter Location for Weather Info</string>
     <string name="retro_activity">Retro Weather</string>
+    <string name="weather_location_header_details">Today\'s weather (Date : %s)</string>
 
 </resources>

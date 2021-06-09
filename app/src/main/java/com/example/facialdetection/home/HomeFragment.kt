@@ -1,18 +1,22 @@
-package com.example.facialdetection
+package com.example.facialdetection.home
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.facialdetection.MainActivity
+import com.example.facialdetection.MainActivityViewModel
+import com.example.facialdetection.R
 import com.example.facialdetection.databinding.FragmentHomeBinding
 import com.example.facialdetection.retro.RetroActivity
 
 class HomeFragment : Fragment() {
 
+    private lateinit var mainActivityViewModel: MainActivityViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -20,21 +24,31 @@ class HomeFragment : Fragment() {
     ): View {
 
 
-        val binding: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        val binding: FragmentHomeBinding =
+            DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
+        mainActivityViewModel = MainActivityViewModel()
 
 
-        binding.startButton.setOnClickListener{
+        binding.startButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_cameraFragment)
         }
 
-        binding.viewImaqes.setOnClickListener{
+        binding.viewImaqes.setOnClickListener {
             startRetroActivity()
         }
 
         return binding.root
     }
 
-    private fun startRetroActivity(){
+    override fun onResume() {
+        super.onResume()
+        mainActivityViewModel.setTitle("Hieieieie")
+    }
+
+
+
+    private fun startRetroActivity() {
         startActivity(
             Intent(activity, RetroActivity::class.java)
         )

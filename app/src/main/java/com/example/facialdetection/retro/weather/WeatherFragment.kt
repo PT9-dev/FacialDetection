@@ -28,18 +28,32 @@ class WeatherFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_weather, container, false)
         val args: WeatherFragmentArgs by navArgs()
+
+        // Set the view model
         viewModelFactory = WeatherViewModelFactory(args.query)
         viewModel = ViewModelProvider(this, viewModelFactory).get(WeatherViewModel::class.java)
         viewModel.getWeather()
+        binding.weatherView = viewModel
+        binding.lifecycleOwner = this
+
+        // observe live data
         viewModel.state.observe(viewLifecycleOwner, Observer { str->
             binding.trial.text = str
+        })
+
+        viewModel.date.observe(viewLifecycleOwner, Observer {
+            if(it != "") {
+                binding.weatherLocationHeaderDetails.visibility = View.VISIBLE
+                binding.weatherProgressBar.visibility = View.GONE
+            }
         })
 
         viewModel.picture.observe(viewLifecycleOwner, Observer { icon ->
             Glide.with(requireContext())
                 .load(icon)
                 .placeholder(R.drawable.image)
-                .error(R.drawable.image_no_found)
+                .error(R.drawable.image_not_found)
+                .centerCrop()
                 .into(binding.weatherImage)
         })
 

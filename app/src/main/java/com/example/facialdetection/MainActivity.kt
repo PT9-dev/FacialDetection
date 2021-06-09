@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.facialdetection.databinding.ActivityMainBinding
@@ -11,13 +12,22 @@ import com.example.facialdetection.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     //lateinit var appBarConfiguration: AppBarConfiguration
+    lateinit var viewModel: MainActivityViewModel
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        viewModel = MainActivityViewModel()
+        supportActionBar?.title = "uiuuuuuuuuuuu"
         val navController = findNavController(R.id.navigate_main)
         //appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController)
+        viewModel.title.observe(this, Observer {
+            supportActionBar?.title = it
+        })
+
 
 
     }

@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.facialdetection.HomeFragment"
-        android:label="fragment_home"
+        android:name="com.example.facialdetection.home.HomeFragment"
+        android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_cameraFragment"
@@ -17,6 +17,6 @@
     <fragment
         android:id="@+id/cameraFragment"
         android:name="com.example.facialdetection.camera.CameraFragment"
-        android:label="CameraFragment"
+        android:label="Face Detection"
         tools:layout="@layout/fragment_camera"/>
 </navigation>

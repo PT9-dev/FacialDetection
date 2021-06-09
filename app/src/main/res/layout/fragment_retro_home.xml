@@ -33,22 +33,58 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_chainStyle="packed" />
 
+            <TextView
+                android:id="@+id/titleTxtDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:text="Get Today's Weather"
+                android:textColor="#d3d8e3"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/locationTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                />
+
+
             <AutoCompleteTextView
                 android:id="@+id/locationTxt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="40dp"
                 android:layout_marginTop="200dp"
-                android:layout_marginRight="40dp"
                 android:background="@drawable/round_button"
                 android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:gravity="center"
                 android:hint="@string/location_txt_hint"
                 android:textColor="@color/element_white"
                 android:textColorHint="@color/element_white"
-                app:layout_constraintBottom_toTopOf="@id/goButton"
+                android:layout_marginEnd="30dp"
+                android:layout_marginStart="30dp"
+                app:layout_constraintBottom_toTopOf="@id/warningTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/titleTxt" />
 
+            <TextView
+                android:id="@+id/warningTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:text="Location does not exist"
+                android:textColor="#f90208"
+                android:textSize="15sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@id/goButton"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/locationTxt"
+                app:layout_constraintVertical_chainStyle="packed" />
 
 
             <Button
@@ -64,7 +100,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/locationTxt" />
+                app:layout_constraintTop_toBottomOf="@id/warningTxt" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

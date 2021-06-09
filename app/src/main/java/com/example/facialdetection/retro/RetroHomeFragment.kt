@@ -33,6 +33,7 @@ class RetroHomeFragment : Fragment() {
     ): View{
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_retro_home, container, false)
+        (activity as RetroActivity).supportActionBar?.title = "Weather"
 
         textAdapter = ArrayAdapter(requireActivity(), R.layout.support_simple_spinner_dropdown_item, list)
         binding.locationTxt.threshold = 1
@@ -76,11 +77,12 @@ class RetroHomeFragment : Fragment() {
                     textAdapter.clear()
                     val body = response.body()
                     if (body?.size != 0) {
+                        binding.warningTxt.visibility = View.INVISIBLE
                         for (item in response.body()!!) {
                             list.add(item.title)
                         }
                     }else{
-                        list.add("Location does not exist")
+                        binding.warningTxt.visibility = View.VISIBLE
                         id = ""
                     }
                     textAdapter.addAll(list)
