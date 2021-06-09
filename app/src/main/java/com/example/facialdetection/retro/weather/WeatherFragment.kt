@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.facialdetection.R
 import com.example.facialdetection.databinding.FragmentWeatherBinding
 
@@ -33,6 +34,16 @@ class WeatherFragment : Fragment() {
         viewModel.state.observe(viewLifecycleOwner, Observer { str->
             binding.trial.text = str
         })
+
+        viewModel.picture.observe(viewLifecycleOwner, Observer { icon ->
+            Glide.with(requireContext())
+                .load(icon)
+                .placeholder(R.drawable.image)
+                .error(R.drawable.image_no_found)
+                .into(binding.weatherImage)
+        })
+
+
 
         return binding.root
     }

@@ -9,8 +9,8 @@ import com.google.gson.annotations.SerializedName
 class WeatherId : ArrayList<WeatherIdItem>()
 
 data class WeatherIdItem(
-    val latt_long: String,
-    val location_type: String,
+    @SerializedName("title")
     val title: String,
+    @SerializedName("woeid")
     val woeid: Int
 )
