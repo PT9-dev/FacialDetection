@@ -22,6 +22,7 @@ class RetroHomeFragment : Fragment() {
     lateinit var binding: FragmentRetroHomeBinding
     private lateinit var textAdapter: ArrayAdapter<String>
     private var list = mutableListOf("yuiuo", "jbhkihjbn")
+    private var id = ""
 
 
 
@@ -49,7 +50,7 @@ class RetroHomeFragment : Fragment() {
         binding.uploadImageBtn.setOnClickListener{
             val query = binding.locationTxt.text.toString()
 
-            if (query != ""){
+            if (id != ""){
            val action = RetroHomeFragmentDirections.actionRetroHomeFragmentToWeatherFragment(query)
             findNavController().navigate(action)
             }
@@ -61,6 +62,7 @@ class RetroHomeFragment : Fragment() {
 
     fun process(){
         val queryLocation = binding.locationTxt.text.toString()
+        id = ""
         if(queryLocation != ""){
             val service = RetrofitClient().getIdAPI()
             val call = service.IdOf(queryLocation)
@@ -71,17 +73,21 @@ class RetroHomeFragment : Fragment() {
                 ) {
                     list.clear()
                     textAdapter.clear()
-                    if (response.body() != null) {
+                    val body = response.body()
+                    if (body?.size != 0) {
                         for (item in response.body()!!) {
                             list.add(item.title)
                         }
-                        textAdapter.addAll(list)
-                        textAdapter.notifyDataSetChanged()
-                        val id = response.body()?.get(0)!!.woeid
-                        println(id)
                     }else{
-
+                        list.add("Location does not exist")
+                        id = ""
                     }
+                    textAdapter.addAll(list)
+                    textAdapter.notifyDataSetChanged()
+
+                    if(body?.size == 1)
+                        id = body[0].woeid.toString()
+
                 }
 
                 override fun onFailure(call: Call<WeatherId?>, t: Throwable) {

@@ -7,8 +7,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:scrollbars="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -41,6 +41,7 @@
                 android:layout_marginTop="200dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_button"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                 android:gravity="center"
                 android:hint="@string/location_txt_hint"
                 android:textColor="@color/element_white"
