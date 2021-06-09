@@ -41,27 +41,18 @@
                 android:layout_marginTop="200dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_button"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                 android:gravity="center"
                 android:hint="@string/location_txt_hint"
                 android:textColor="@color/element_white"
                 android:textColorHint="@color/element_white"
-                app:layout_constraintBottom_toTopOf="@id/spinner"
+                app:layout_constraintBottom_toTopOf="@id/goButton"
                 app:layout_constraintTop_toBottomOf="@id/titleTxt" />
 
 
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:layout_constraintBottom_toTopOf="@id/uploadImageBtn"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/locationTxt" />
 
             <Button
-                android:id="@+id/uploadImageBtn"
+                android:id="@+id/goButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -73,7 +64,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/spinner" />
+                app:layout_constraintTop_toBottomOf="@id/locationTxt" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

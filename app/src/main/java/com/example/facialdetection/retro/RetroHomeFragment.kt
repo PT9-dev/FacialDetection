@@ -21,7 +21,7 @@ import retrofit2.Response
 class RetroHomeFragment : Fragment() {
     lateinit var binding: FragmentRetroHomeBinding
     private lateinit var textAdapter: ArrayAdapter<String>
-    private var list = mutableListOf("yuiuo", "jbhkihjbn")
+    private var list = mutableListOf<String>()
     private var id = ""
 
 
@@ -47,11 +47,11 @@ class RetroHomeFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         })
 
-        binding.uploadImageBtn.setOnClickListener{
+        binding.goButton.setOnClickListener{
             val query = binding.locationTxt.text.toString()
 
             if (id != ""){
-           val action = RetroHomeFragmentDirections.actionRetroHomeFragmentToWeatherFragment(query)
+           val action = RetroHomeFragmentDirections.actionRetroHomeFragmentToWeatherFragment(id)
             findNavController().navigate(action)
             }
         }
@@ -86,7 +86,8 @@ class RetroHomeFragment : Fragment() {
                     textAdapter.notifyDataSetChanged()
 
                     if(body?.size == 1)
-                        id = body[0].woeid.toString()
+                        if (body[0].title==queryLocation)
+                            id = body[0].woeid.toString()
 
                 }
 

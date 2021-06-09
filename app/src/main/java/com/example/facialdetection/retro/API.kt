@@ -1,5 +1,6 @@
 package com.example.facialdetection.retro
 
+import com.example.facialdetection.retro.pojo.ConsolidatedWeather
 import com.example.facialdetection.retro.pojo.Weather
 import com.example.facialdetection.retro.pojo.WeatherId
 import retrofit2.Call
@@ -14,5 +15,7 @@ interface GetIdAPI {
 
 
 interface GetWeatherAPI{
+    @GET("/api/location/{id}/")
+    fun weather(@Path("id") id: String): Call<Weather?>
 
 }

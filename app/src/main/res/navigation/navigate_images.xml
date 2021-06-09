@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/weatherFragment"
-        android:name="com.example.facialdetection.retro.WeatherFragment"
+        android:name="com.example.facialdetection.retro.weather.WeatherFragment"
         android:label="WeatherFragment"
         tools:layout="@layout/fragment_weather">
         <argument
