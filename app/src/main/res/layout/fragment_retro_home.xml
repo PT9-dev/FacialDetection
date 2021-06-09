@@ -8,9 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
-        android:fillViewport="true" >
+        android:fillViewport="true">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/bg_black2"
@@ -18,60 +18,64 @@
 
 
             <TextView
+                android:id="@+id/titleTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Image Upload Menu"
-                android:textSize="100px"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:text="Retro Weather App"
                 android:textColor="#d3d8e3"
-                android:layout_alignParentTop = "true"
-                android:layout_centerHorizontal = "true"
-                android:layout_marginTop="50dp" />
+                android:textSize="35dp"
+                app:layout_constraintBottom_toTopOf="@id/locationTxt"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
 
-            <Button
-                android:id="@+id/getImageBtn"
+            <AutoCompleteTextView
+                android:id="@+id/locationTxt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginLeft="40dp"
-                android:layout_marginTop="450dp"
+                android:layout_marginTop="200dp"
                 android:layout_marginRight="40dp"
                 android:background="@drawable/round_button"
-                android:elevation="10dp"
                 android:gravity="center"
-                android:text="GET IMAGES"
+                android:hint="@string/location_txt_hint"
                 android:textColor="@color/element_white"
-                android:textSize="20dp" />
+                android:textColorHint="@color/element_white"
+                app:layout_constraintBottom_toTopOf="@id/spinner"
+                app:layout_constraintTop_toBottomOf="@id/titleTxt" />
 
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintBottom_toTopOf="@id/uploadImageBtn"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/locationTxt" />
 
             <Button
                 android:id="@+id/uploadImageBtn"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="550dp"
-                android:layout_marginRight="40dp"
+                android:layout_marginTop="32dp"
                 android:background="@drawable/round_button"
-                android:elevation="10dp"
                 android:gravity="center"
-                android:text="UPLOAD IMAGE"
+                android:text="GO"
                 android:textColor="@color/element_white"
-                android:textSize="20dp" />
-
-            <Button
-                android:id="@+id/getImageByNameBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="650dp"
-                android:layout_marginRight="40dp"
-                android:background="@drawable/round_button"
-                android:elevation="10dp"
-                android:gravity="center"
-                android:text="GET IMAGE BY NAME"
-                android:textColor="@color/element_white"
-                android:textSize="20dp" />
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner" />
 
 
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
 </layout>

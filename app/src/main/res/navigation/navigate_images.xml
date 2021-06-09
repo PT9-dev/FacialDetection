@@ -10,19 +10,16 @@
         android:label="RetroHomeFragment"
         tools:layout="@layout/fragment_retro_home">
         <action
-            android:id="@+id/action_retroHomeFragment_to_getImagesFragment2"
-            app:destination="@id/getImagesFragment2" />
-        <action
-            android:id="@+id/action_retroHomeFragment_to_uploadImageFragment"
-            app:destination="@id/uploadImageFragment" />
+            android:id="@+id/action_retroHomeFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment" />
     </fragment>
     <fragment
-        android:id="@+id/getImagesFragment2"
-        android:name="com.example.facialdetection.retro.GetImagesFragment"
-        android:label="GetImagesFragment" />
-    <fragment
-        android:id="@+id/uploadImageFragment"
-        android:name="com.example.facialdetection.retro.UploadImageFragment"
-        android:label="UploadImageFragment"
-        tools:layout="@layout/fragment_upload_image"/>
+        android:id="@+id/weatherFragment"
+        android:name="com.example.facialdetection.retro.WeatherFragment"
+        android:label="WeatherFragment"
+        tools:layout="@layout/fragment_weather">
+        <argument
+            android:name="query"
+            app:argType="string" />
+    </fragment>
 </navigation>

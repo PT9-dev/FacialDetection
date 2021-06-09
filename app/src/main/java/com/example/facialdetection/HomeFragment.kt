@@ -17,16 +17,19 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+
+
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
 
         binding.startButton.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_cameraFragment)
         }
 
-//        binding.viewImaqes.setOnClickListener{
-//            startRetroActivity()
-//        }
+        binding.viewImaqes.setOnClickListener{
+            startRetroActivity()
+        }
 
         return binding.root
     }

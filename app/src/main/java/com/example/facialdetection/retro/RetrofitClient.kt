@@ -1,22 +1,21 @@
 package com.example.facialdetection.retro
 
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-
-
 class RetrofitClient() {
-    private val BASE_URL = "http://remotedevs.org:8080/api/"
+    private val BASE_URL = "https://www.metaweather.com/"
     private var mInstance: RetrofitClient? = null
-    private lateinit var retrofit:Retrofit
+    var httpClient = OkHttpClient.Builder()
 
-    init {
-        retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+    private var retrofit:Retrofit = Retrofit.Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        //.client(httpClient.build())
+        .build()
+
 
     @Synchronized
     fun getInstance(): RetrofitClient? {
@@ -26,9 +25,13 @@ class RetrofitClient() {
         return mInstance
     }
 
-    fun getAPI(): API {
-        return retrofit.create(API::class.java)
+    fun getIdAPI(): GetIdAPI {
+        return retrofit.create(GetIdAPI::class.java)
 
+    }
+
+    fun getWeatherAPI(): GetWeatherAPI {
+        return retrofit.create(GetWeatherAPI::class.java)
     }
 
 

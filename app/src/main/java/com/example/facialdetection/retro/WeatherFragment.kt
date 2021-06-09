@@ -6,19 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.navArgs
 import com.example.facialdetection.R
-import com.example.facialdetection.databinding.FragmentUploadImageBinding
+import com.example.facialdetection.databinding.FragmentWeatherBinding
 
-class UploadImageFragment : Fragment() {
+class WeatherFragment : Fragment() {
 
-    lateinit var binding:FragmentUploadImageBinding
+    private lateinit var binding: FragmentWeatherBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_upload_image, container, false)
+        // Inflate the layout for this fragment
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_weather, container, false)
+        val args: WeatherFragmentArgs by navArgs()
+        binding.trial.text = args.query
         return binding.root
     }
+
 
 }

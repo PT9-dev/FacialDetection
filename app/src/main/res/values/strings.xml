@@ -12,5 +12,6 @@
     <string name="selectedImageDescription">Image to Detect faces</string>
     <string name="select_image">Select Image</string>
     <string name="view_images_retrofit">RETRO ACTIVITY</string>
+    <string name="location_txt_hint">Enter Location for Weather Info</string>
 
 </resources>

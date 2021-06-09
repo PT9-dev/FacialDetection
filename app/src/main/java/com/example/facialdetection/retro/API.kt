@@ -1,22 +1,18 @@
 package com.example.facialdetection.retro
 
-import com.example.facialdetection.Image
-import okhttp3.MultipartBody
-import okhttp3.ResponseBody
+import com.example.facialdetection.retro.pojo.Weather
+import com.example.facialdetection.retro.pojo.WeatherId
 import retrofit2.Call
 import retrofit2.http.*
 
 
-interface API {
+interface GetIdAPI {
     // GET request to get all images
-    @GET("fileUpload/")
-    fun images(): Call<List<Image?>?>?
+    @GET("/api/location/search/")
+    fun IdOf(@Query("query") query: String): Call<WeatherId?>
+}
 
-    @GET("fileUpload/files/{filename}") // GET request to get an image by its name
-    @Streaming
-    fun getImageByName(@Path("filename") name: String?): Call<ResponseBody?>?
 
-    @Multipart // POST request to upload an image from storage
-    @POST("fileUpload/")
-    fun uploadImage(@Part image: MultipartBody.Part?): Call<ResponseBody?>?
+interface GetWeatherAPI{
+
 }
