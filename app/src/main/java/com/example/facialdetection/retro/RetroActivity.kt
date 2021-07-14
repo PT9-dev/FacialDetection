@@ -13,8 +13,7 @@ class RetroActivity : AppCompatActivity() {
         val binding: ActivityRetroBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_retro)
 
-        val service = RetrofitClient().getIdAPI()
-        //val callSync = service.images("lagos")
+
 
     }
 }

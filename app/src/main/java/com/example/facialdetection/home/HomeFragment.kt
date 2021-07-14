@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
 
 
         binding.startButton.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_cameraFragment)
+            findNavController().navigate(R.id.action_homeFragment_to_listFaceFragment)
         }
 
         binding.viewImaqes.setOnClickListener {

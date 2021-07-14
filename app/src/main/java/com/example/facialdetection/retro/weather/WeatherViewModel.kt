@@ -3,14 +3,22 @@ package com.example.facialdetection.retro.weather
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.facialdetection.retro.RetrofitClient
-import com.example.facialdetection.retro.pojo.Weather
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import androidx.lifecycle.viewModelScope
+import com.example.facialdetection.retro.weather.api.ApiHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class WeatherViewModel(private val weatherId: String): ViewModel() {
-   private var _state = MutableLiveData<String>()
+
+@KoinApiExtension
+class WeatherViewModel: ViewModel(), KoinComponent {
+    private lateinit var weatherId: String
+    private val service: ApiHelper by inject()
+
+    private var _state = MutableLiveData<String>()
     val state : LiveData<String>
     get() = _state
     private var _loc = MutableLiveData<String>()
@@ -23,45 +31,43 @@ class WeatherViewModel(private val weatherId: String): ViewModel() {
     val picture : LiveData<String>
     get() = _picture
 
-    init {
+
+    fun init(args: String) {
+        this.weatherId = args
         _state.value = ""
         _loc.value = ""
         _date.value =""
         _picture.value = ""
     }
 
-
     fun getWeather(){
-        val service = RetrofitClient().getWeatherAPI()
-        val call = service.weather(weatherId)
-        call.enqueue(object: Callback<Weather?> {
-            override fun onResponse(call: Call<Weather?>, response: Response<Weather?>) {
-                val idn = response.body()?.consolidatedWeather!![0]
-                _loc.value = response.body()!!.title
-                _state.value = idn.weatherStateName
-                _picture.value = ICON_BASE_URL+idn.weatherStateAbbr+".png"
-                _date.value = idn.applicableDate
+        viewModelScope.launch {
+            getWeatherImpl()
+        }
+    }
 
-            }
+    private suspend fun getWeatherImpl(){
+        withContext(Dispatchers.IO){
 
-            override fun onFailure(call: Call<Weather?>, t: Throwable) {
+            val weather = try {
+                service.weather(weatherId)
+            } catch (e: Exception) {
                 println("error")
-
+                throw Exception()
             }
-        })
+            val today = weather.consolidatedWeather[0]
+            _loc.postValue(weather.title)
+            _state.postValue(today.weatherStateName)
+            _picture.postValue(ICON_BASE_URL+today.weatherStateAbbr+".png")
+            _date.postValue(today.applicableDate)
+        }
+
+
     }
 
 
     companion object{
         const val ICON_BASE_URL = "https://www.metaweather.com/static/img/weather/png/"
     }
-
-//    fun getPicture(state: String) {
-//        when(state) {
-//            "Light Cloud" -> url
-//            "Light Cloud" -> url
-//        }
-//    }
-
 
 }

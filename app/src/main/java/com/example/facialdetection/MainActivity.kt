@@ -8,23 +8,22 @@ import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.facialdetection.databinding.ActivityMainBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class MainActivity : AppCompatActivity() {
     //lateinit var appBarConfiguration: AppBarConfiguration
-    lateinit var viewModel: MainActivityViewModel
+    private val mainViewModel: MainActivityViewModel by viewModel()
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        viewModel = MainActivityViewModel()
-        supportActionBar?.title = "uiuuuuuuuuuuu"
         val navController = findNavController(R.id.navigate_main)
         //appBarConfiguration = AppBarConfiguration(navController.graph)
         setupActionBarWithNavController(navController)
-        viewModel.title.observe(this, Observer {
+        mainViewModel.title.observe(this, Observer {
             supportActionBar?.title = it
         })
 

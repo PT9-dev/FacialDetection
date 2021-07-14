@@ -16,4 +16,5 @@
 
     <color name="colorRectangle">#455A64</color>
     <color name="colorBackground">#FFFFD600</color>
+    <color name="Red">#F44336</color>
 </resources>

@@ -37,8 +37,8 @@
 
             <ImageView
                 android:id="@+id/selectedImage"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="224dp"
+                android:layout_height="224dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -55,49 +55,104 @@
                 android:layout_marginBottom="100dp"
                 android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/selectImageBtn"
+            <EditText
+                android:id="@+id/face_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
+                android:hint="@string/add_face_hint"
+                android:visibility="invisible"
+                android:textColorHint="@color/white"
+                android:textColor="@color/element_white" />
+
+            <Button
+                android:id="@+id/addFaceBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/file_upload_field"
                 android:clickable="true"
                 android:drawablePadding="10dp"
-                android:focusable="true"
                 android:gravity="center"
-                android:text="@string/select_image"
+                android:text="@string/add_face"
                 android:textColor="@color/element_white"
-                android:textCursorDrawable="@null"
+                android:enabled="false"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                app:drawableEndCompat="@drawable/upload"
-                app:drawableStartCompat="@drawable/image"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/selectedImage" />
+                android:focusable="true" />
 
             <TextView
-                android:id="@+id/cameraBtn"
+                android:id="@+id/faceNumberText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/file_upload_field"
-                android:clickable="true"
-                android:drawablePadding="10dp"
-                android:focusable="true"
-                android:gravity="center"
-                android:text="@string/camera"
+                android:layout_marginTop="15dp"
+                android:text="@{@string/face_no(cameraView.faceNo)}"
+                android:textAlignment="center"
                 android:textColor="@color/element_white"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                app:drawableEndCompat="@drawable/camera"
-                app:drawableStartCompat="@drawable/camera_image" />
+                android:textStyle="bold|italic"
+                android:visibility="gone"
+                tools:visibility="visible"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/selectImageBtn"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/file_upload_field"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="@string/select_image"
+                    android:textColor="@color/element_white"
+                    android:textCursorDrawable="@null"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/upload"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/cameraBtn"
+                    app:layout_constraintEnd_toStartOf="@+id/cameraBtn"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/cameraBtn"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/file_upload_field"
+                    android:clickable="true"
+                    android:drawablePadding="10dp"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="@string/camera"
+                    android:textColor="@color/element_white"
+                    android:layout_marginTop="20dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:drawableEndCompat="@drawable/camera"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/selectImageBtn"
+                    />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+            <ImageView
+                android:id="@+id/dummy"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:contentDescription="@string/selectedImageDescription"
+                android:scaleType="fitStart"
+                android:src="@drawable/no_image" />
 
             <TextView
                 android:id="@+id/detailHeader"
@@ -111,17 +166,7 @@
                 android:textStyle="bold"
                 android:visibility="invisible" />
 
-            <TextView
-                android:id="@+id/faceNumberText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="@{@string/face_no(cameraView.faceNo)}"
-                android:textAlignment="center"
-                android:textColor="@color/element_white"
-                android:textSize="20sp"
-                android:textStyle="bold|italic"
-                android:visibility="invisible" />
+
 
             <TextView
                 android:id="@+id/detailText"

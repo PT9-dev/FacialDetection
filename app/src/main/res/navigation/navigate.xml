@@ -11,12 +11,33 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_cameraFragment"
-            app:destination="@id/cameraFragment" />
+            android:id="@+id/action_homeFragment_to_listFaceFragment"
+            app:destination="@id/listFaceFragment" />
     </fragment>
     <fragment
         android:id="@+id/cameraFragment"
         android:name="com.example.facialdetection.camera.CameraFragment"
         android:label="Face Detection"
-        tools:layout="@layout/fragment_camera"/>
+        tools:layout="@layout/fragment_camera">
+        <action
+            android:id="@+id/action_cameraFragment_to_listFaceFragment"
+            app:destination="@id/listFaceFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listFaceFragment"
+        android:name="com.example.facialdetection.camera.ListFaceFragment"
+        android:label="ListFaceFragment"
+        tools:layout="@layout/fragment_list_face">
+        <action
+            android:id="@+id/action_listFaceFragment_to_cameraFragment"
+            app:destination="@id/cameraFragment" />
+        <action
+            android:id="@+id/action_listFaceFragment_to_faceCompareFragment"
+            app:destination="@id/faceCompareFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/faceCompareFragment"
+        android:name="com.example.facialdetection.camera.FaceCompareFragment"
+        android:label="FaceCompareFragment"
+        tools:layout="@layout/fragment_face_compare"/>
 </navigation>

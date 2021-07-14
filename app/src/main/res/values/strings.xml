@@ -6,7 +6,7 @@
     <string name="keep_tapping">Keep tapping.</string>
     <string name="done">Done!</string>
     <string name="camera">Camera</string>
-    <string name="detail_header">FACE DETAILS</string>
+    <string name="detail_header">CROPPED FACE</string>
     <string name="face_no">Number of Faces Detected: %d</string>
     <string name="face_detection_header">FACE DETECTION</string>
     <string name="selectedImageDescription">Image to Detect faces</string>
@@ -14,5 +14,8 @@
     <string name="location_txt_hint">Enter Location for Weather Info</string>
     <string name="retro_activity">Retro Weather</string>
     <string name="weather_location_header_details">Today\'s weather (Date : %s)</string>
+    <string name="confirm_compare">FIND BEST MATCH</string>
+    <string name="add_face">ADD FACE</string>
+    <string name="add_face_hint">"Enter Name of the Face "</string>
 
 </resources>
